@@ -4,6 +4,9 @@ import { Route, Routes } from "react-router-dom";
 import Home from "@/pages/Home";
 import Auth from "./pages/Auth";
 import ProtectedRoute from "./widgets/ProtectedRoute";
+import { Sign } from "crypto";
+import SignUp from "./pages/SignUp";
+import AccountInfo from "./pages/AccountInfo";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -12,11 +15,22 @@ function App() {
     <>
       <Routes>
         <Route path="/auth" element={<Auth />} />
+        <Route path="/signup" element={<SignUp />} />
+
         <Route
           path="/"
           element={
             <ProtectedRoute>
               <Home />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/account-info"
+          element={
+            <ProtectedRoute>
+              <AccountInfo />
             </ProtectedRoute>
           }
         />

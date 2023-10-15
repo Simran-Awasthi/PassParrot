@@ -1,9 +1,16 @@
-import React, { useState } from "react";
-import { signUpWithEmailAndPassword, signInWithGoogle } from "../AuthService";
-import { UserCredential } from "firebase/auth";
+// import React, { useState } from "react";
+// import { signUpWithEmailAndPassword, signInWithGoogle } from "../AuthService";
+import { UserCredential, signInWithEmailAndPassword } from "firebase/auth";
 import { Outlet, useNavigate } from "react-router-dom";
 import img3 from "@/assets/illustrations/Chubbs DrawKit_Vector_Illustrations-12.png";
 import { FaGoogle, FaApple } from "react-icons/fa";
+import { useState } from "react";
+import {
+  loginWithEmailAndPassword,
+  signInWithGoogle,
+  signUpWithEmailAndPassword,
+} from "@/Authservice";
+import { auth } from "@/firebase";
 
 export default function AuthPage() {
   let navigate = useNavigate();
@@ -25,12 +32,8 @@ export default function AuthPage() {
       [e.target.name]: e.target.value,
     }));
   };
-  const handleSignInEmail: React.FormEventHandler<HTMLFormElement> = async (
-    e
-  ) => {
-    e.preventDefault();
-    const user: UserCredential | null = await signUpWithEmailAndPassword(
-      data.name,
+  const handleSignInEmail = async () => {
+    const user: UserCredential | null = await loginWithEmailAndPassword(
       data.email,
       data.password
     );
@@ -73,15 +76,16 @@ export default function AuthPage() {
               <hr className="w-full border-gray-500"></hr>
             </div>
             <div className="w-full max-w-md justify-center items-start p-4 flex flex-col gap-4">
-              <label htmlFor="username" className="text-black ">
-                username:
+              <label htmlFor="email" className="text-black ">
+                email
               </label>
               <input
                 type="text"
-                name="username"
-                placeholder="Your Username"
+                name="email"
+                placeholder="email"
                 required
                 className="w-full border-2 border-neutral-600 border-opacity-30 flex justify-center items-center gap-2 px-6 py-2 rounded-lg font-bold  "
+                onChange={handleDataChanged}
               />
               <label htmlFor="password" className="text-black">
                 password:
@@ -91,15 +95,19 @@ export default function AuthPage() {
                 name="password"
                 placeholder="Your Password"
                 required
+                onChange={handleDataChanged}
                 className="w-full border-2 border-neutral-600 border-opacity-30 flex justify-center items-center gap-2 px-6 py-2 rounded-lg font-bold"
               />
 
-              <button className="w-full border-2 border-neutral-600 border-opacity-30 flex justify-center items-center px-6 py-4 rounded-lg font-bold bg-black  text-white">
+              <button
+                className="w-full border-2 border-neutral-600 border-opacity-30 flex justify-center items-center px-6 py-4 rounded-lg font-bold bg-black  text-white"
+                onClick={handleSignInEmail}
+              >
                 Sign In
               </button>
             </div>
 
-            <button onClick={() => navigate("/signin")} className="self-center">
+            <button onClick={() => navigate("/signup")} className="self-center">
               <span className=" underline font-bold dark:text-black">
                 Don't have an account? sign up
               </span>

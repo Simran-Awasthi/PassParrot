@@ -1,4 +1,4 @@
-;
+// import { FirebaseError } from "firebase/app";
 import {
     createUserWithEmailAndPassword,
     signInWithEmailAndPassword,
@@ -8,7 +8,7 @@ import {
   } from "firebase/auth";
   import { query, collection, where, getDocs, addDoc } from "firebase/firestore";
   // import toast from "react-hot-toast";
-  import { auth, googleProvider,db } from "./firebase";
+  import { auth, googleProvider, db } from "./firebase";
   import { FirebaseError } from "firebase/app";
   
   const signInWithGoogle = async () => {
@@ -76,7 +76,7 @@ import {
   };
   
   const loginWithEmailAndPassword = async (
-    name: string,
+   
     email: string,
     password: string
   ) => {

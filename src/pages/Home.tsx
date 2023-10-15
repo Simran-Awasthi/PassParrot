@@ -25,6 +25,7 @@ import {
 } from "firebase/firestore";
 import { auth, firestore } from "@/firebase";
 import { signOut } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 
 interface Account {
   id: string;
@@ -72,6 +73,7 @@ const Home = () => {
     );
     return unsubscribe;
   }, [auth.currentUser !== null]);
+  let navigate = useNavigate();
 
   return (
     <div className="w-full bg-white min-h-screen flex flex-col justify-start items-center relative text-black">
@@ -97,16 +99,16 @@ const Home = () => {
             <div className="text-[8rem] absolute right-5 top-[-5] rotate-[-30deg] opacity-10 ">
               <FaUserFriends />
             </div>
-            <span className="text-2xl font-bold">add friends</span>
+            <span className="text-2xl font-bold ">shared with me</span>
           </div>
+
           <Dialog open={dailogOpen} onOpenChange={setDailogOpen}>
             <DialogTrigger asChild>
-              <div className=" h-[100px] w-full  flex flex-col justify-end items-start border-2 border-zinc-400 border-opacity-30 rounded-md p-4 bg-pink-400 shadow-xl bg-opacity-50 relative  overflow-clip">
+              <div className=" h-[100px] w-full  flex flex-col justify-end items-start border-2 border-zinc-400 border-opacity-30 rounded-md p-4 bg-green-500 shadow-xl bg-opacity-50 relative  overflow-clip">
                 <div className="text-[8rem] absolute right-5 top-[-5] rotate-[-30deg] opacity-10 ">
                   <FaSmile />
                 </div>
-
-                <span className="text-2xl font-bold">add login</span>
+                <span className="text-2xl font-bold ">add login</span>
               </div>
             </DialogTrigger>
 
@@ -187,6 +189,13 @@ const Home = () => {
               return (
                 <div
                   key={e.id}
+                  onClick={() => {
+                    navigate("/account-info?id=" + e.id, {
+                      state: {
+                        account: e,
+                      },
+                    });
+                  }}
                   className="w-full flex flex-row gap-4 items-center bg-neutral-100 rounded-md p-3 px-6 text-black shadow-md drop-shadow-lg "
                 >
                   <div className="h-10 w-10 flex justify-center items-center font-bold text-lg uppercase bg-pink-400 rounded-md">
