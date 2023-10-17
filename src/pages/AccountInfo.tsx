@@ -7,7 +7,7 @@ import { loreleiNeutral } from "@dicebear/collection";
 import Visibility from "@material-ui/icons/Visibility";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
-import { TextField } from "@material-ui/core";
+import { TextField, makeStyles } from "@material-ui/core";
 import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
 import VpnKeyIcon from "@mui/icons-material/VpnKey";
 type CustomInputProps = {
@@ -65,10 +65,16 @@ const AccountInfo = () => {
             </div>
           </div>
         </div>
-        <section className="gap-20 w-full flex  flex-col flex- items-center justify-center">
-          <div className="w-full max-w-md rounded-md flex flex-col shadow-md drop-shadow-md ">
-            <div className="w-full max-w-md  items-center justify-between  flex font-bold bg-neutral-100 gap-4 p-4  ">
-              <PersonOutlineIcon className=" font-bold  rounded-md" />
+        <section className="gap-20 w-full flex  flex-col  items-center justify-center p-4  relative ">
+          <div className="w-full max-w-md rounded-md flex flex-col shadow-md drop-shadow-md  bottom-5 ">
+            <button className="absolute -top-5 right-4 bg-pink-300 text-white px-6 py-2 font-semibold text-sm rounded-lg hover:bg-pink-400">
+              DETAILS
+            </button>
+            <div className="w-full max-w-md  items-center justify-center  flex font-bold bg-neutral-100 gap-4 p-4 ">
+              <div className="flex items-center justify-center px-2 py-2 bg-blue-300 rounded-md">
+                <PersonOutlineIcon className=" font-bold  rounded-md" />
+              </div>
+
               <div className="flex flex-col w-full">
                 <label htmlFor="name" className=" text-neutral-600 text-xs ">
                   EMAIL
@@ -84,10 +90,10 @@ const AccountInfo = () => {
             </div>
             <hr className="w-full  h-0 bg-gray-800  rounded dark:bg-gray-700" />
 
-            <div className="w-full max-w-md  items-center justify-between  flex font-bold  gap-4  bg-yellow-100  p-4">
+            <div className="w-full max-w-md  items-center justify-between flex font-bold gap-4 bg-yellow-100 p-4">
               <VpnKeyIcon className="h-10 w-10 rounded-md" />
               <div className="flex flex-col w-full">
-                <label htmlFor="name" className=" text-neutral-600 text-xs ">
+                <label htmlFor="name" className=" text-neutral-600 text-xs">
                   PASSWORD
                 </label>
                 <TextField
