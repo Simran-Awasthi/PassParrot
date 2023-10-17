@@ -45,14 +45,14 @@ const AccountInfo = () => {
   const svg = avatar.toDataUriSync();
 
   return (
-    <div className="w-full items-center justify-center flex flex-col p-8 ">
-      <div className="flex flex-row items-center gap-4 justify-start w-full max-w-md mb-8  ">
+    <div className="w-full items-center justify-center flex flex-col p-8  bg-green-100 ">
+      <div className="flex flex-row items-center gap-4 justify-start w-full max-w-md mb-8   ">
         <button className="font-bold">
           <FaArrowLeft />
         </button>
         <h1 className="text-xl font-bold">Account-info</h1>
       </div>
-      <section className="gap-20 w-full flex  flex-col items-center justify-center">
+      <section className="gap-12 w-full flex  flex-col items-center justify-center">
         <div className="w-full max-w-md items-center justify-between flex flex-row gap-4 bg-neutral-100 rounded-md shadow-md drop-shadow-md p-4">
           <img src={svg} alt="" className="h-10 w-10 rounded-full" />
           <div className=" flex flex-col items-start justify-center w-full">
@@ -70,58 +70,84 @@ const AccountInfo = () => {
             <button className="absolute -top-5 right-4 bg-pink-300 text-white px-6 py-2 font-semibold text-sm rounded-lg hover:bg-pink-400">
               DETAILS
             </button>
-            <div className="w-full max-w-md  items-center justify-center  flex font-bold bg-neutral-100 gap-4 p-4 ">
-              <div className="flex items-center justify-center px-2 py-2 bg-blue-300 rounded-md">
-                <PersonOutlineIcon className=" font-bold  rounded-md" />
-              </div>
+            <div className="w-full rounded-md flex flex-col">
+              <div className="w-full max-w-md  items-center justify-center  flex  bg-neutral-100 gap-4 p-4 ">
+                <div className="flex items-center justify-center px-2 py-2 bg-blue-300 rounded-md">
+                  <PersonOutlineIcon className=" font-bold  rounded-md" />
+                </div>
 
-              <div className="flex flex-col w-full">
-                <label htmlFor="name" className=" text-neutral-600 text-xs ">
-                  EMAIL
-                </label>
-                <input
-                  type="name"
-                  name="Email"
-                  id=""
-                  placeholder="example"
-                  className=" bg-transparent outline-none "
-                />
+                <div className="flex flex-col w-full">
+                  <label htmlFor="name" className=" text-neutral-600 text-xs ">
+                    EMAIL
+                  </label>
+                  <input
+                    type="name"
+                    name="Email"
+                    id=""
+                    placeholder="example"
+                    className=" bg-transparent outline-none "
+                  />
+                </div>
+              </div>
+              <hr className="w-full  h-0 bg-gray-800  rounded dark:bg-gray-700" />
+
+              <div className="w-full max-w-md  items-center justify-between flex font-bold gap-4 bg-yellow-100 p-4">
+                <div className=" flex items-center justify-center px-2 py-2 bg-yellow-200 rounded-md">
+                  <VpnKeyIcon className="h-10 w-10 rounded-md rotate-[145deg]" />
+                </div>
+
+                <div className="flex flex-col w-full">
+                  <label htmlFor="name" className=" text-neutral-600 text-xs">
+                    PASSWORD
+                  </label>
+                  <TextField
+                    name="password"
+                    id=""
+                    placeholder="password"
+                    className=" bg-transparent outline-none  "
+                    type={showPassword ? "text" : "password"}
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    InputProps={
+                      {
+                        endAdornment: (
+                          <div className="outline-none border-none flex items-end justify-end bg-transparent w-full">
+                            <InputAdornment position="end">
+                              <button onClick={handleTogglePasswordVisibility}>
+                                {showPassword ? (
+                                  <Visibility />
+                                ) : (
+                                  <VisibilityOff />
+                                )}
+                              </button>
+                            </InputAdornment>
+                          </div>
+                        ),
+                      } as CustomTextFieldProps["InputProps"]
+                    }
+                  />
+                </div>
               </div>
             </div>
-            <hr className="w-full  h-0 bg-gray-800  rounded dark:bg-gray-700" />
+          </div>
+        </section>
 
-            <div className="w-full max-w-md  items-center justify-between flex font-bold gap-4 bg-yellow-100 p-4">
-              <VpnKeyIcon className="h-10 w-10 rounded-md" />
-              <div className="flex flex-col w-full">
-                <label htmlFor="name" className=" text-neutral-600 text-xs">
-                  PASSWORD
-                </label>
-                <TextField
-                  name="password"
-                  id=""
-                  placeholder="password"
-                  className=" bg-transparent outline-none  "
-                  type={showPassword ? "text" : "password"}
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  InputProps={
-                    {
-                      endAdornment: (
-                        <div className="outline-none border-none flex items-end justify-end bg-transparent w-full">
-                          <InputAdornment position="end">
-                            <button onClick={handleTogglePasswordVisibility}>
-                              {showPassword ? (
-                                <Visibility />
-                              ) : (
-                                <VisibilityOff />
-                              )}
-                            </button>
-                          </InputAdornment>
-                        </div>
-                      ),
-                    } as CustomTextFieldProps["InputProps"]
-                  }
-                />
+        <section className="w-full flex  flex-col  items-center justify-center p-4  relative ">
+          <div className="w-full max-w-md rounded-md flex flex-col shadow-md drop-shadow-md  bottom-5 ">
+            <button className="absolute -top-5 right-4 bg-pink-300 text-white px-6 py-2 font-semibold text-sm rounded-lg hover:bg-pink-400">
+              ADD FRIENDS
+            </button>
+            <div className="max-w-md  flex bg-neutral-100  w-[500px] h-[200px] px-12 items-center  gap-12 rounded-md ">
+              <div className="flex flex-col gap-2  ">
+                <img src={svg} alt="" className="h-14 w-14 rounded-full" />
+                <h1 className=" text-gray-400 text-lg font-serif  p-2">John</h1>
+              </div>
+              <div className="flex max-w-md  pb-8 ">
+                <p className="w-16 h-16  min-h-16 min-w-16 items-center  justify-center pb-2 flex  bg-pink-400 rounded-full">
+                  <span className=" text-[50px] font-bold text-white items-center justify-center">
+                    +
+                  </span>
+                </p>
               </div>
             </div>
           </div>

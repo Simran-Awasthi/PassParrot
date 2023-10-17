@@ -1,16 +1,11 @@
 // import React, { useState } from "react";
 // import { signUpWithEmailAndPassword, signInWithGoogle } from "../AuthService";
-import { UserCredential, signInWithEmailAndPassword } from "firebase/auth";
-import { Outlet, useNavigate } from "react-router-dom";
+import { UserCredential } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 import img3 from "@/assets/illustrations/Chubbs DrawKit_Vector_Illustrations-12.png";
-import { FaGoogle, FaApple } from "react-icons/fa";
+import { FaGoogle } from "react-icons/fa";
 import { useState } from "react";
-import {
-  loginWithEmailAndPassword,
-  signInWithGoogle,
-  signUpWithEmailAndPassword,
-} from "@/Authservice";
-import { auth } from "@/firebase";
+import { loginWithEmailAndPassword, signInWithGoogle } from "@/Authservice";
 
 export default function AuthPage() {
   let navigate = useNavigate();
