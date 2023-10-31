@@ -34,6 +34,23 @@ function App() {
             </ProtectedRoute>
           }
         />
+        <Route
+          path="/account-info"
+          element={
+            <ProtectedRoute>
+              <AccountInfo />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/addfriends"
+          element={
+            <ProtectedRoute>
+              <AccountInfo />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
     </>
   );

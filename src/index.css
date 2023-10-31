@@ -1,3 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+.shadcn-ui .input {
+    outline: none;
+    border-bottom: none;
+  }
+  

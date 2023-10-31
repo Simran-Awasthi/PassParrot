@@ -99,12 +99,12 @@ const Home = () => {
             <div className="text-[8rem] absolute right-5 top-[-5] rotate-[-30deg] opacity-10 ">
               <FaUserFriends />
             </div>
-            <span className="text-2xl font-bold ">shared with me</span>
+            <span className="text-2xl font-bold ">add friends</span>
           </div>
 
           <Dialog open={dailogOpen} onOpenChange={setDailogOpen}>
             <DialogTrigger asChild>
-              <div className=" h-[100px] w-full  flex flex-col justify-end items-start border-2 border-zinc-400 border-opacity-30 rounded-md p-4 bg-green-500 shadow-xl bg-opacity-50 relative  overflow-clip">
+              <div className=" h-[100px] w-full  flex flex-col justify-end items-start border-2 border-zinc-400 border-opacity-30 rounded-md p-4 bg--400 shadow-xl bg-opacity-50 relative  overflow-clip">
                 <div className="text-[8rem] absolute right-5 top-[-5] rotate-[-30deg] opacity-10 ">
                   <FaSmile />
                 </div>
